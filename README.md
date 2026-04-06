@@ -22,28 +22,6 @@ This project constructs a **comprehensive county-level panel dataset** for Penns
 
 ---
 
-## Repository Structure
-
-```
-.
-├── README.md                        ← You are here
-├── data/
-│   ├── raw/                         ← Original source files (unmodified)
-│   ├── processed/                   ← Intermediate cleaned datasets by source
-│   └── final/
-│       └── county_panel.csv         ← Final merged analytical dataset
-├── scripts/
-│   ├── collection/                  ← Scraping and download scripts
-│   ├── cleaning/                    ← Per-source cleaning scripts
-│   └── merge.py                     ← Final integration pipeline
-├── docs/
-│   ├── README_data_collection.md    ← Data sources and processing methodology
-│   └── README_dataset.md            ← Data dictionary for the final dataset
-└── notebooks/                       ← Exploratory analysis (optional)
-```
-
----
-
 ## Data at a Glance
 
 | Dimension | Details |
@@ -71,45 +49,12 @@ This project constructs a **comprehensive county-level panel dataset** for Penns
 
 ---
 
-## Quick Start
-
-### Requirements
-
-```bash
-pip install pandas numpy requests beautifulsoup4
-```
-
-### Load the Final Dataset
-
-```python
-import pandas as pd
-
-df = pd.read_csv("data/final/county_panel.csv")
-
-# Key identifiers
-print(df[["Year", "CountyFIPS", "CZ", "Population", "Deaths"]].head())
-```
-
-### Example: Opioid Mortality Over Time
-
-```python
-import matplotlib.pyplot as plt
-
-state_avg = df.groupby("Year")["Deaths"].mean()
-state_avg.plot(title="Average County Opioid Mortality Rate (per 10,000)", figsize=(10, 5))
-plt.ylabel("Deaths per 10,000")
-plt.tight_layout()
-plt.show()
-```
-
----
-
 ## Documentation
 
 For full details on data sources, collection methodology, and processing decisions, see:
 
-- **[`docs/README_data_collection.md`](docs/README_data_collection.md)** — Covers all data sources, acquisition methods, and cleaning procedures for each component dataset.
-- **[`docs/README_dataset.md`](docs/README_dataset.md)** — Full data dictionary for the final merged panel, including variable definitions, units, and coverage notes.
+- **README_data_collection** — Covers all data sources, acquisition methods, and cleaning procedures for each component dataset.
+- **README_dataset** — Full data dictionary for the final merged panel, including variable definitions, units, and coverage notes.
 
 ---
 
